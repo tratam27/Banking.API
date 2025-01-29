@@ -1,4 +1,4 @@
-# TTB.Assignment.Api.
+# Banking.Api.
 
 # Setup to run project
 
