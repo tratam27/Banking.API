@@ -1,0 +1,30 @@
+version: '3.4'
+
+networks:
+  ttb.assignment:
+
+services:
+  ttb.assignment.api:
+    container_name: ttbassignmentapi
+    image: ${DOCKER_REGISTRY-}ttbassignmentapi
+    build:
+      context: .
+      dockerfile: TTB.Assignment.Api/Dockerfile
+    networks:
+      - ttb.assignment
+    ports:
+    - "8080:8080"
+    - "8081:8081"
+
+  ttb.assignment.db:
+    container_name: sqlserver_container
+    image: mcr.microsoft.com/mssql/server:2019-latest    
+    restart: always
+    environment:
+      SA_PASSWORD: P@ssw0rd
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - ttb.assignment
+
