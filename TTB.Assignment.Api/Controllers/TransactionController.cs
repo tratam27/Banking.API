@@ -28,7 +28,7 @@ namespace TTB.Assignment.API.Controllers
             _transactionService = transactionService;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("deposit")]
         public async Task<IActionResult> Deposit(DepositRequestModel req)
         {
